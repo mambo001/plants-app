@@ -8,4 +8,5 @@ export default defineConfig({
     outDir: "dist",
     assetsDir: "",
   },
+  base: "/plants-app/",
 });
