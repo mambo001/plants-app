@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { HashRouter, Route, Routes } from "react-router";
 
 import { PlantsProvider } from "./context";
 import { Home } from "./pages/home";
@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 export function AppInternal() {
   return (
     <Routes>
-      <Route path="plants-app">
+      <Route path="/">
         <Route
           index
           element={
@@ -48,9 +48,9 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <PlantsProvider>
         <ThemeProvider theme={appTheme}>
-          <BrowserRouter>
+          <HashRouter>
             <AppInternal />
-          </BrowserRouter>
+          </HashRouter>
         </ThemeProvider>
       </PlantsProvider>
     </QueryClientProvider>
