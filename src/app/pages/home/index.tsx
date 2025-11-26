@@ -9,6 +9,7 @@ import {
   Skeleton,
   Stack,
   Typography,
+  type ChipOwnProps,
 } from "@mui/material";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined";
@@ -29,7 +30,7 @@ function IconLabel(props: { icon: ReactNode; label: ReactNode }) {
 
 export interface PlantCardProps {
   title: ReactNode;
-  lifecycle: ReactNode;
+  lifecycle: string;
   sun: ReactNode;
   water: ReactNode;
   season: ReactNode;
@@ -38,6 +39,18 @@ export interface PlantCardProps {
 }
 
 export function PlantCard(props: PlantCardProps) {
+  const getLifeCycleColor = (lifecycle: string): ChipOwnProps["color"] => {
+    switch (lifecycle.toLowerCase()) {
+      case "annual":
+        return "error";
+      case "perennial":
+        return "primary";
+      case "biennial":
+        return "error";
+      default:
+        return "default";
+    }
+  };
   return (
     <Card
       sx={{
@@ -66,7 +79,8 @@ export function PlantCard(props: PlantCardProps) {
                 label={
                   <Typography variant="caption">{props.lifecycle}</Typography>
                 }
-                color="primary"
+                // color="primary"
+                color={getLifeCycleColor(props.lifecycle)}
                 variant="outlined"
               />
             </Stack>
