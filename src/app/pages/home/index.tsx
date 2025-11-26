@@ -44,9 +44,9 @@ export function PlantCard(props: PlantCardProps) {
         width: {
           xs: "100%",
           sm: "48%",
-          md: "30%",
-          lg: "30%",
-          xl: "30%",
+          md: "31.75%",
+          lg: "31.75%",
+          xl: "31.75%",
         },
         minHeight: 150,
       }}
@@ -211,13 +211,13 @@ function HomeLayout(props: HomeLayoutProps) {
         maxWidth: {
           xs: "100%",
           sm: "500px",
-          md: "600px",
-          lg: "600px",
-          xl: "600px",
+          md: "750px",
+          lg: "800px",
+          xl: "800px",
         },
       }}
     >
-      <Stack marginTop={2} gap={2}>
+      <Stack marginTop={2} paddingBottom={4} gap={2}>
         {props.search}
         {props.suggestions}
       </Stack>
