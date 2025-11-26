@@ -6,6 +6,7 @@ import {
   Typography,
   Stack,
   Skeleton,
+  Box,
 } from "@mui/material";
 import Fuse, { type FuseResult } from "fuse.js";
 
@@ -70,8 +71,12 @@ export function HomeSearch(props: { options: Plant[] }) {
         <PlantCard
           key={plant.title}
           title={<Typography>{plant.title}</Typography>}
-          season={plant.season}
           lifecycle={plant.lifecycle}
+          sun={plant.sun}
+          water={plant.water}
+          season={plant.season}
+          planting={plant.planting}
+          soil={plant.soil}
         />
       );
     });
@@ -102,12 +107,12 @@ export function HomeSearch(props: { options: Plant[] }) {
           Search plants
         </Typography>
         {renderAutocomplete()}
-        <Card elevation={0}>
+        <Box>
           <Typography variant="h6" color="textSecondary" gutterBottom>
             Results
           </Typography>
           <Stack gap={2}>{renderResults()}</Stack>
-        </Card>
+        </Box>
       </Stack>
     </Card>
   );
