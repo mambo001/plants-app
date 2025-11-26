@@ -111,7 +111,15 @@ export function HomeSearch(props: { options: Plant[] }) {
           <Typography variant="h6" color="textSecondary" gutterBottom>
             Results
           </Typography>
-          <Stack gap={2}>{renderResults()}</Stack>
+          <Stack
+            gap={2}
+            direction={"row"}
+            sx={{
+              flexWrap: "wrap",
+            }}
+          >
+            {renderResults()}
+          </Stack>
         </Box>
       </Stack>
     </Card>
