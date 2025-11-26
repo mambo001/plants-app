@@ -53,7 +53,9 @@ export function PlantCard(props: PlantCardProps) {
         minHeight: 150,
       }}
     >
-      <CardActionArea href={`plant/${encodeURIComponent(String(props.title))}`}>
+      <CardActionArea
+        href={`#/plant/${encodeURIComponent(String(props.title))}`}
+      >
         <CardHeader
           title={
             <Stack
