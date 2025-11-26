@@ -1,25 +1,15 @@
 import { createContext, useContext, type PropsWithChildren } from "react";
-import { useQuery } from "@tanstack/react-query";
 
 import type { Plant } from "./types";
-import { API_URL } from "../environment";
+import { usePlants } from "./hooks";
 
 const PlantsContext = createContext<Plant[] | null>(null);
 
 export function PlantsProvider(props: PropsWithChildren) {
-  const { data: plants = [] } = useQuery<Plant[]>({
-    queryKey: ["plants"],
-    queryFn: async () => {
-      const response = await fetch(API_URL);
-      if (!response.ok) {
-        throw new Error("Failed to fetch plants data");
-      }
-      return response.json();
-    },
-  });
+  const { data: plants } = usePlants();
 
   return (
-    <PlantsContext.Provider value={plants}>
+    <PlantsContext.Provider value={plants || []}>
       {props.children}
     </PlantsContext.Provider>
   );

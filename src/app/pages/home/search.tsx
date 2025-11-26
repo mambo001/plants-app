@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import Fuse, { type FuseResult } from "fuse.js";
 
-import { PlantCard } from "./index";
 import type { Plant } from "../../types";
+import { PlantCard } from "./plant-card";
 
 export function HomeSearch(props: { options: Plant[] }) {
   const autocompleteOptions = props.options.map((option) => option.title);
@@ -70,7 +70,7 @@ export function HomeSearch(props: { options: Plant[] }) {
       return (
         <PlantCard
           key={plant.title}
-          title={<Typography>{plant.title}</Typography>}
+          title={plant.title}
           lifecycle={plant.lifecycle}
           sun={plant.sun}
           water={plant.water}
