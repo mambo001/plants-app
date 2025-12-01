@@ -40,7 +40,7 @@ export function AppBar(props: React.PropsWithChildren) {
       <CssBaseline />
       <HideOnScroll {...props}>
         <MUIAppBar>
-          <Toolbar>
+          <Toolbar variant="dense">
             <Typography variant="h6" component="div">
               Plants
             </Typography>
