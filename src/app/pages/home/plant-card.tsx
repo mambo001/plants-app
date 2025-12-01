@@ -64,7 +64,9 @@ export function PlantCard(props: PlantCardProps) {
               alignItems={"center"}
               gap={1}
             >
-              <Typography variant="body1">{props.title}</Typography>
+              <Typography variant="body1" noWrap width={120}>
+                {props.title}
+              </Typography>
               <Chip
                 size="small"
                 label={
@@ -82,20 +84,14 @@ export function PlantCard(props: PlantCardProps) {
               xs: "column",
               sm: "column",
               md: "column",
-              lg: "row",
-              xl: "row",
+              lg: "column",
+              xl: "column",
             }}
             justifyContent={"space-between"}
             gap={1.5}
           >
             <Stack
-              direction={{
-                xs: "column",
-                sm: "column",
-                md: "row",
-                lg: "row",
-                xl: "row",
-              }}
+              direction={"column"}
               gap={1.5}
               sx={{
                 flexWrap: "wrap",
@@ -125,13 +121,7 @@ export function PlantCard(props: PlantCardProps) {
               />
             </Stack>
             <Stack
-              direction={{
-                xs: "column",
-                sm: "column",
-                md: "row",
-                lg: "row",
-                xl: "row",
-              }}
+              direction={"column"}
               gap={1.5}
               sx={{
                 flexWrap: "wrap",
