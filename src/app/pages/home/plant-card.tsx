@@ -69,7 +69,6 @@ export function PlantCard(props: PlantCardProps) {
               <Typography
                 variant="body1"
                 noWrap
-                bgcolor={"red"}
                 maxWidth={{
                   xs: 220,
                   sm: 220,
