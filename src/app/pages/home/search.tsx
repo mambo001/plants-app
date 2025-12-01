@@ -90,7 +90,9 @@ export function HomeSearch(props: { options: Plant[] }) {
         onInputChange={handleInputChange}
         value={searchValue}
         onChange={handleOnChange}
-        renderInput={(params) => <TextField {...params} label="ex: Cilantro" />}
+        renderInput={(params) => (
+          <TextField {...params} label="example: Cilantro" />
+        )}
       />
     ) : (
       <Skeleton variant="rectangular" height={56} />
