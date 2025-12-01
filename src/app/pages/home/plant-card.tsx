@@ -66,7 +66,18 @@ export function PlantCard(props: PlantCardProps) {
               justifyContent="space-between"
               alignItems={"center"}
             >
-              <Typography variant="body1" noWrap maxWidth={100}>
+              <Typography
+                variant="body1"
+                noWrap
+                bgcolor={"red"}
+                maxWidth={{
+                  xs: 220,
+                  sm: 220,
+                  md: 100,
+                  lg: 100,
+                  xl: 100,
+                }}
+              >
                 {props.title}
               </Typography>
               <Chip
