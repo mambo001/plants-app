@@ -42,7 +42,7 @@ export function AppBar(props: React.PropsWithChildren) {
         <MUIAppBar>
           <Toolbar>
             <Typography variant="h6" component="div">
-              Plants PWA
+              Plants
             </Typography>
           </Toolbar>
         </MUIAppBar>
