@@ -71,7 +71,7 @@ export function PlantCard(props: PlantCardProps) {
                 noWrap
                 maxWidth={{
                   xs: 220,
-                  sm: 220,
+                  sm: 100,
                   md: 100,
                   lg: 100,
                   xl: 100,
