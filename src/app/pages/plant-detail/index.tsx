@@ -15,10 +15,14 @@ import GrassOutlinedIcon from "@mui/icons-material/GrassOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import Grid4x4OutlinedIcon from "@mui/icons-material/Grid4x4Outlined";
 import TakeoutDiningOutlinedIcon from "@mui/icons-material/TakeoutDiningOutlined";
-
 import { useNavigate, useParams } from "react-router";
+
 import { usePlantsContext } from "../../context";
 import { IconLabel } from "../../components";
+
+function formatCompanionPlants(plants: string): string {
+  return plants.trim().split(",").join(", ");
+}
 
 function LabeledValue(props: { label: string; value: ReactNode }) {
   return (
@@ -55,7 +59,7 @@ export function PlantDetail() {
           <Stack>
             <Typography variant="h5">{plantId}</Typography>
             <Typography variant="body2" color="textSecondary">
-              {plant.lifecycle} - {plant.season}
+              {plant.lifecycle}
             </Typography>
           </Stack>
         </Stack>
@@ -68,60 +72,93 @@ export function PlantDetail() {
                 Growing Requirements
               </Typography>
               <Stack direction={"row"} justifyContent={"space-between"}>
-                <Stack gap={1}>
-                  <IconLabel
-                    icon={
-                      <WbSunnyOutlinedIcon
-                        sx={{
-                          color: "#FB923C",
-                        }}
-                        fontSize="small"
+                <Stack flex={1} gap={1}>
+                  <LabeledValue
+                    label="Sunlight: "
+                    value={
+                      <IconLabel
+                        icon={
+                          <WbSunnyOutlinedIcon
+                            sx={{
+                              color: "#FB923C",
+                            }}
+                            fontSize="small"
+                          />
+                        }
+                        label={plant.sun}
                       />
                     }
-                    label={plant.sun}
                   />
-                  <IconLabel
-                    icon={
-                      <WaterDropOutlinedIcon
-                        sx={{
-                          color: "#60a5fa",
-                        }}
-                        fontSize="small"
+                  <LabeledValue
+                    label="Water: "
+                    value={
+                      <IconLabel
+                        icon={
+                          <WaterDropOutlinedIcon
+                            sx={{
+                              color: "#60a5fa",
+                            }}
+                            fontSize="small"
+                          />
+                        }
+                        label={plant.water}
                       />
                     }
-                    label={plant.water}
                   />
-                  <IconLabel
-                    icon={
-                      <CalendarTodayOutlinedIcon
-                        color="info"
-                        fontSize="small"
+                  <LabeledValue
+                    label="Water: "
+                    value={
+                      <IconLabel
+                        icon={
+                          <CalendarTodayOutlinedIcon
+                            color="info"
+                            fontSize="small"
+                          />
+                        }
+                        label={`${plant.season}(${plant.planting})`}
                       />
                     }
-                    label={`${plant.season}(${plant.planting})`}
                   />
                 </Stack>
-                <Stack gap={1}>
-                  <IconLabel
-                    icon={
-                      <GrassOutlinedIcon color="primary" fontSize="small" />
-                    }
-                    label={plant.soil}
-                  />
-                  <IconLabel
-                    icon={
-                      <Grid4x4OutlinedIcon color="primary" fontSize="small" />
-                    }
-                    label={plant.spacing}
-                  />
-                  <IconLabel
-                    icon={
-                      <TakeoutDiningOutlinedIcon
-                        color="primary"
-                        fontSize="small"
+                <Stack flex={1} gap={1}>
+                  <LabeledValue
+                    label="Soil Type: "
+                    value={
+                      <IconLabel
+                        icon={
+                          <GrassOutlinedIcon color="primary" fontSize="small" />
+                        }
+                        label={plant.soil}
                       />
                     }
-                    label={plant.potSize}
+                  />
+                  <LabeledValue
+                    label="Spacing: "
+                    value={
+                      <IconLabel
+                        icon={
+                          <Grid4x4OutlinedIcon
+                            color="primary"
+                            fontSize="small"
+                          />
+                        }
+                        label={plant.spacing}
+                      />
+                    }
+                  />
+                  <LabeledValue
+                    label="Container Size: "
+                    value={
+                      <IconLabel
+                        icon={
+                          <TakeoutDiningOutlinedIcon
+                            color="primary"
+                            fontSize="small"
+                          />
+                        }
+                        label={plant.potSize}
+                      />
+                    }
                   />
                 </Stack>
               </Stack>
@@ -137,13 +174,7 @@ export function PlantDetail() {
                 Additional Info
               </Typography>
               <Stack gap={2} direction={"row"} justifyContent={"space-between"}>
-                <Stack gap={1}>
-                  <LabeledValue
-                    label="Planting Window: "
-                    value={
-                      <Typography variant="body1">{plant.planting}</Typography>
-                    }
-                  />
+                <Stack flex={1} gap={1}>
                   <LabeledValue
                     label="Edible Parts: "
                     value={
@@ -156,12 +187,12 @@ export function PlantDetail() {
                     label="Companion Plants: "
                     value={
                       <Typography variant="body1">
-                        {plant.companionPlants}
+                        {formatCompanionPlants(plant.companionPlants)}
                       </Typography>
                     }
                   />
                 </Stack>
-                <Stack gap={1}>
+                <Stack flex={1} gap={1}>
                   <LabeledValue
                     label="Fertilizer Needs: "
                     value={
