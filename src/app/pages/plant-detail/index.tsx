@@ -106,7 +106,7 @@ export function PlantDetail() {
                     }
                   />
                   <LabeledValue
-                    label="Water: "
+                    label="Planting Season: "
                     value={
                       <IconLabel
                         icon={
