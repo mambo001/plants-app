@@ -43,6 +43,7 @@ export function PlantCard(props: PlantCardProps) {
   return (
     <Card
       sx={{
+        minHeight: 150,
         width: {
           xs: "100%",
           sm: "48%",
@@ -50,10 +51,12 @@ export function PlantCard(props: PlantCardProps) {
           lg: "31.75%",
           xl: "31.75%",
         },
-        minHeight: 150,
       }}
     >
       <CardActionArea
+        sx={{
+          height: "100%",
+        }}
         href={`#/plant/${encodeURIComponent(String(props.title))}`}
       >
         <CardHeader
@@ -62,9 +65,8 @@ export function PlantCard(props: PlantCardProps) {
               direction={"row"}
               justifyContent="space-between"
               alignItems={"center"}
-              gap={1}
             >
-              <Typography variant="body1" noWrap width={120}>
+              <Typography variant="body1" noWrap maxWidth={100}>
                 {props.title}
               </Typography>
               <Chip
