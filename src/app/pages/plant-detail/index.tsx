@@ -191,6 +191,14 @@ export function PlantDetail() {
                       </Typography>
                     }
                   />
+                  <LabeledValue
+                    label="Days to Harvest: "
+                    value={
+                      <Typography variant="body1">
+                        {plant.daysToHarvest}
+                      </Typography>
+                    }
+                  />
                 </Stack>
                 <Stack flex={1} gap={1}>
                   <LabeledValue
