@@ -13,4 +13,5 @@ export interface Plant {
   companionPlants: string;
   potSize: string;
   difficulty: string;
+  daysToHarvest: string;
 }
