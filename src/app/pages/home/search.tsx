@@ -28,7 +28,6 @@ export function HomeSearch(props: { options: Plant[] }) {
     _: SyntheticEvent<Element, Event>,
     value: string
   ) => {
-    console.log({ value });
     if (value === "") {
       setResult([]);
     }
