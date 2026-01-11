@@ -1,10 +1,12 @@
-const CACHE_NAME = "simple-pwa-v1";
+const CACHE_NAME = "plants-app-v1";
 const urlsToCache = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",
+  "./favicon.svg",
+  "https://script.google.com/macros/s/AKfycbw6C1-xZLrziotpT7o7qIX5lvJUHcuVPC2wuHW7s-uxYLyzJmE7g09QyaTWVP-6VVEc/exec",
 ];
 
 // Install event - cache files
