@@ -12,6 +12,7 @@ import Fuse, { type FuseResult } from "fuse.js";
 
 import type { Plant } from "../../types";
 import { PlantCard } from "./plant-card";
+import { useSearchParams } from "react-router";
 
 export function HomeSearch(props: { options: Plant[] }) {
   const autocompleteOptions = props.options.map((option) => option.title);
@@ -20,9 +21,19 @@ export function HomeSearch(props: { options: Plant[] }) {
     shouldSort: true,
     threshold: 0.4,
   });
-  const [result, setResult] = useState<FuseResult<string>[]>([]);
-  const [searchValue, setSearchValue] = useState<string | null>(null);
-  const [searchInputValue, setSearchInputValue] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("search");
+
+  const [result, setResult] = useState<FuseResult<string>[]>(() => {
+    if (query) {
+      return fuse.search(query);
+    }
+    return [];
+  });
+  const [searchValue, setSearchValue] = useState<string | null>(query || null);
+  const [searchInputValue, setSearchInputValue] = useState<string | null>(
+    query || ""
+  );
 
   const handleInputChange = (
     _: SyntheticEvent<Element, Event>,
@@ -32,6 +43,7 @@ export function HomeSearch(props: { options: Plant[] }) {
       setResult([]);
     }
     setSearchInputValue(value);
+    setSearchParams({ search: value });
     const fuseResults = fuse.search(value || "");
     setResult(fuseResults);
   };
@@ -96,6 +108,7 @@ export function HomeSearch(props: { options: Plant[] }) {
     ) : (
       <Skeleton variant="rectangular" height={56} />
     );
+
   return (
     <Card
       variant="outlined"
