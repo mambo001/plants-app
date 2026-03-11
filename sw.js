@@ -1,4 +1,4 @@
-const CACHE_NAME = "plants-app-v1";
+const CACHE_NAME = "plants-app-v2";
 const urlsToCache = [
   "./",
   "./index.html",
@@ -6,6 +6,8 @@ const urlsToCache = [
   "./icon-192.png",
   "./icon-512.png",
   "./favicon.svg",
+  "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap",
+  "https://fonts.googleapis.com/icon?family=Material+Icons",
   "https://script.google.com/macros/s/AKfycbw6C1-xZLrziotpT7o7qIX5lvJUHcuVPC2wuHW7s-uxYLyzJmE7g09QyaTWVP-6VVEc/exec",
 ];
 
@@ -15,7 +17,7 @@ self.addEventListener("install", (event) => {
     caches.open(CACHE_NAME).then((cache) => {
       console.log("Opened cache");
       return cache.addAll(urlsToCache);
-    })
+    }),
   );
 });
 
@@ -28,7 +30,7 @@ self.addEventListener("fetch", (event) => {
         return response;
       }
       return fetch(event.request);
-    })
+    }),
   );
 });
 
@@ -42,8 +44,8 @@ self.addEventListener("activate", (event) => {
             console.log("Deleting old cache:", cacheName);
             return caches.delete(cacheName);
           }
-        })
+        }),
       );
-    })
+    }),
   );
 });
